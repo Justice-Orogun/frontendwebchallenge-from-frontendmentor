@@ -211,11 +211,19 @@ p[data-width="wide"] {
   color: var(--clr-accent-400);
 }
 
-@media (max-width: 50em) {
+/* Step 7: Add margin-inline here */
+@media (max-width: 47em){ 
+  .primary-header[data-overlay]{ 
+    position: relative;
+    z-index: 999;
+  }
+
   .primary-navigation {
     display: none;
-
     position: fixed;
+    /* Step 6: Add margin-inline here */
+    z-index: 999;
+    margin-inline: auto;
     padding: var(--size-700);
     inset: 7rem var(--size-400) auto;
     max-width: 25rem;
@@ -244,6 +252,7 @@ p[data-width="wide"] {
     display: block;
   }
 
+
   .mobile-nav-toggle {
     display: block;
     position: fixed;
@@ -253,11 +262,19 @@ p[data-width="wide"] {
     background: transparent;
     border: 0;
     padding: 0.5em;
+
+/* Step 9: Add call the images here */
+    background-image: url("images/icon-hamburger.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
-  .mobile-nav-toggle .icon-close {
-    display: none;
-  }
+  /* Step 9: Add here */
+    .mobile-nav-toggle[aria-expanded="true"]{ 
+      background-image: url("images/icon-close.svg");
+    }
+  
 }
 
 /* footer */
@@ -529,6 +546,44 @@ input:where([type="text"], [type="email"], ) {
   background: var(--clr-accent-400);
 }
 
+
+
+/* Step:2 add the css */
+
+
+@media (max-width:50em){ 
+  .hero_image{ 
+    /* position: relative; */
+    order: -1;
+  }
+}
+
+.hero_image::before{ 
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 95%;
+  max-height: 70vh;
+  max-height: 70dvh;
+  aspect-ratio: 1 / 1.2;
+  background-image: url("images/bg-tablet-pattern.svg");
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  border: 1px solid red;
+}
+
+@media (min-width: 50em){ 
+  .hero_image::before{ 
+    width: 45%;
+
+  }
+
+}
+
+
+
 /* Utility classes */
 
 .visually-hidden {
@@ -672,6 +727,12 @@ input:where([type="text"], [type="email"], ) {
 
 .margin-bottom-700 {
   margin-block-end: var(--size-700);
+}
+
+/* Step:4 add mx auto */
+
+.mx-auto{ 
+  margin-inline: auto;
 }
 
 .display-sm-none {
